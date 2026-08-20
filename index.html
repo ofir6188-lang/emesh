@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>אֶמֶשׁ — אוסף סתיו</title>
-<meta name="description" content="שבעה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק. אוסף סתיו 2026 — אֶמֶשׁ.">
+<meta name="description" content="שישה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק. אוסף סתיו 2026 — אֶמֶשׁ.">
 <meta property="og:title" content="אֶמֶשׁ — אוסף סתיו">
-<meta property="og:description" content="בגד אחד לעשר שנים. שבעה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק.">
+<meta property="og:description" content="בגד אחד לעשר שנים. שישה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק.">
 <meta property="og:image" content="img/hero.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C1D19'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23F2F1EC' text-anchor='middle'%3E%D7%90%3C/text%3E%3C/svg%3E">
@@ -53,9 +53,12 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- masthead ---------- */
 header{
-  position:relative;z-index:30;
+  position:sticky;top:0;z-index:30;
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  padding:26px var(--gut) 0 calc(var(--gut) + clamp(28px,4vw,52px));
+  padding:26px var(--gut) 22px calc(var(--gut) + clamp(28px,4vw,52px));
+  background:rgba(222,219,210,.86);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(28,29,25,.09);
 }
 nav{display:flex;gap:26px;font-size:13px;letter-spacing:.06em;color:var(--shade)}
 nav a{position:relative;padding-bottom:2px}
@@ -72,6 +75,10 @@ nav a:hover::after{width:100%}
   text-align:center;
 }
 .utility{display:flex;gap:22px;justify-content:flex-end;font-size:13px;color:var(--shade)}
+.nav-toggle{display:none}
+.burger{display:none;width:22px;height:14px;flex-direction:column;justify-content:space-between;cursor:pointer}
+.burger span{display:block;height:1px;background:var(--ink)}
+.mobile-panel{display:none}
 
 /* ---------- hero ---------- */
 .hero{
@@ -84,7 +91,7 @@ nav a:hover::after{width:100%}
 .frame{
   position:relative;
   aspect-ratio:4/5;
-  background:linear-gradient(168deg,#C9C6BC 0%,#B3B2A6 46%,#8E9187 100%);
+  background:linear-gradient(150deg,#CFCCC2,#A8A99D);
   overflow:hidden;
 }
 .frame img{
@@ -130,6 +137,26 @@ h1 em{font-style:normal;color:var(--sea)}
 }
 .cta:hover{color:var(--sea);border-color:var(--sea)}
 
+/* ---------- ticker ---------- */
+.ticker{
+  margin:clamp(48px,7vw,84px) 0 0;
+  border-top:1px solid rgba(28,29,25,.18);
+  border-bottom:1px solid rgba(28,29,25,.18);
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ticker-track{
+  display:inline-flex;
+  animation:ticker 30s linear infinite;
+  padding:13px 0;
+}
+.ticker-track span{
+  font-size:11px;letter-spacing:.22em;color:var(--shade);
+  padding:0 clamp(20px,3vw,36px);
+  border-inline-end:1px solid rgba(28,29,25,.18);
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(50%)}}
+
 /* ---------- collection ---------- */
 .collection{padding:clamp(72px,11vw,150px) var(--gut) 0 calc(var(--gut) + clamp(28px,4vw,52px))}
 .rule{
@@ -143,9 +170,7 @@ h1 em{font-style:normal;color:var(--sea)}
   grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   gap:clamp(18px,2.6vw,40px);
 }
-.item .frame{aspect-ratio:3/4;background:linear-gradient(150deg,#CFCCC2,#A8A99D)}
-.item:nth-child(2) .frame{background:linear-gradient(150deg,#D5D2C7,#9DA294)}
-.item:nth-child(3) .frame{background:linear-gradient(150deg,#C4C3BA,#8E9187)}
+.item .frame{aspect-ratio:3/4}
 .item:hover .frame img{transform:scale(1.06)}
 /* museum label */
 .label{
@@ -155,11 +180,76 @@ h1 em{font-style:normal;color:var(--sea)}
 }
 .label h3{font-family:var(--display);font-weight:400;font-size:16px}
 .label .meta{font-size:11px;letter-spacing:.1em;color:var(--shade);text-align:left;line-height:1.7}
+.grid .item:nth-child(1){transition-delay:0s}
+.grid .item:nth-child(2){transition-delay:.08s}
+.grid .item:nth-child(3){transition-delay:.16s}
+
+/* ---------- lookbook break ---------- */
+.lookbook{
+  position:relative;
+  margin:clamp(48px,7vw,84px) 0;
+  aspect-ratio:2/1;
+  overflow:hidden;
+}
+.lookbook img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:grayscale(6%) saturate(.94) contrast(1.03);
+}
+.lookbook::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(28,29,25,.55) 0%,rgba(28,29,25,0) 35%);
+}
+.lookbook figcaption{
+  position:absolute;inset-inline-start:18px;bottom:16px;
+  font-size:11px;letter-spacing:.22em;color:rgba(242,241,236,.9);
+}
+
+/* ---------- atelier ---------- */
+.atelier{
+  padding:clamp(24px,4vw,40px) var(--gut) clamp(80px,10vw,140px) calc(var(--gut) + clamp(28px,4vw,52px));
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
+  gap:clamp(28px,5vw,72px);
+  align-items:center;
+}
+.atelier-media .frame{aspect-ratio:4/5}
+.atelier-copy h2{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(26px,3.6vw,48px);line-height:1.15;
+  margin-bottom:clamp(16px,2.4vw,26px);
+  max-width:14ch;
+}
+.atelier-copy p{
+  font-size:clamp(14px,1.3vw,16px);line-height:1.8;
+  color:var(--shade);max-width:46ch;
+  margin-bottom:clamp(28px,4vw,44px);
+}
+.atelier-stats{display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px)}
+.atelier-stats div{border-top:1px solid rgba(28,29,25,.2);padding-top:10px;min-width:100px}
+.atelier-stats span{
+  display:block;font-family:var(--display);font-size:26px;color:var(--sea);margin-bottom:4px;
+}
+.atelier-stats div{font-size:11px;letter-spacing:.08em;color:var(--shade)}
+
+/* ---------- value props ---------- */
+.values{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:clamp(28px,4vw,48px);
+  padding:clamp(56px,7vw,90px) var(--gut) clamp(56px,7vw,90px) calc(var(--gut) + clamp(28px,4vw,52px));
+  border-top:1px solid rgba(28,29,25,.2);
+}
+.value .num{
+  display:block;font-family:var(--display);font-size:15px;color:var(--sea);
+  margin-bottom:clamp(14px,2vw,22px);
+}
+.value h3{font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:10px}
+.value p{font-size:13.5px;line-height:1.75;color:var(--shade);max-width:32ch}
 
 /* ---------- statement ---------- */
 .statement{
   position:relative;
-  margin:clamp(80px,12vw,160px) 0 0;
+  margin:0;
   padding:clamp(56px,8vw,110px) var(--gut) clamp(56px,8vw,110px) calc(var(--gut) + clamp(28px,4vw,52px));
   color:var(--paper);
   background:
@@ -173,13 +263,50 @@ h1 em{font-style:normal;color:var(--sea)}
 }
 .statement span{color:#8E9187;display:block;font-family:var(--body);font-size:11px;letter-spacing:.28em;margin-top:clamp(22px,3vw,38px)}
 
+/* ---------- newsletter ---------- */
+.newsletter{
+  display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,40px);
+  justify-content:space-between;align-items:center;
+  padding:clamp(56px,8vw,100px) var(--gut) clamp(56px,8vw,100px) calc(var(--gut) + clamp(28px,4vw,52px));
+}
+.newsletter-copy h2{font-family:var(--display);font-weight:300;font-size:clamp(22px,2.8vw,32px);margin-bottom:8px}
+.newsletter-copy p{font-size:14px;color:var(--shade)}
+.newsletter-form{display:flex;gap:0;border-bottom:1px solid var(--ink);min-width:min(360px,100%)}
+.newsletter-form input{
+  flex:1;border:0;background:none;font-family:var(--body);font-size:14px;
+  padding:10px 4px;color:var(--ink);outline:none;
+}
+.newsletter-form input::placeholder{color:var(--shade)}
+.newsletter-form button{
+  border:0;background:none;font-family:var(--body);font-size:13px;letter-spacing:.14em;
+  color:var(--ink);cursor:pointer;padding:10px 4px;white-space:nowrap;
+  transition:color .3s;
+}
+.newsletter-form button:hover{color:var(--sea)}
+.newsletter-thanks{font-size:14px;color:var(--sea)}
+
 /* ---------- footer ---------- */
 footer{
-  padding:clamp(38px,5vw,64px) var(--gut) 34px calc(var(--gut) + clamp(28px,4vw,52px));
-  display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center;
+  padding:clamp(48px,6vw,74px) var(--gut) 0 calc(var(--gut) + clamp(28px,4vw,52px));
+  border-top:1px solid rgba(28,29,25,.2);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:clamp(28px,4vw,40px);
+  padding-bottom:clamp(40px,6vw,64px);
+}
+.footer-brand p{font-size:13px;line-height:1.75;color:var(--shade);max-width:32ch;margin-top:14px}
+.footer-col h4{font-size:11px;letter-spacing:.22em;color:var(--shade);margin-bottom:16px;font-weight:400}
+.footer-col{display:flex;flex-direction:column;gap:11px;font-size:13.5px}
+.footer-col a{transition:color .3s}
+.footer-col a:hover{color:var(--sea)}
+.footer-bottom{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  border-top:1px solid rgba(28,29,25,.14);
+  padding:20px 0 30px;
   font-size:12px;color:var(--shade);letter-spacing:.05em;
 }
-footer nav{gap:20px}
 
 /* ---------- entrance ---------- */
 .rise{opacity:0;transform:translateY(16px);animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards}
@@ -191,16 +318,30 @@ footer nav{gap:20px}
 .hero-note .cta{animation-delay:.5s}
 @keyframes rise{to{opacity:1;transform:none}}
 
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.in-view{opacity:1;transform:none}
+
 @media (max-width:760px){
   .hero{grid-template-columns:1fr}
   .hero-note{order:-1}
-  header{grid-template-columns:1fr auto;gap:12px}
-  .utility{display:none}
-  nav{gap:16px;font-size:12px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  .nav-desktop,.utility{display:none}
+  .burger{display:flex}
+  .nav-toggle:checked ~ .mobile-panel{display:flex}
+  .mobile-panel{
+    position:absolute;top:100%;inset-inline:0;z-index:29;
+    flex-direction:column;gap:18px;
+    background:var(--paper);
+    padding:22px var(--gut);
+    border-bottom:1px solid rgba(28,29,25,.15);
+    box-shadow:0 16px 28px rgba(0,0,0,.1);
+  }
+  .atelier{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .rise{opacity:1;transform:none}
+  .rise,.reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
 </style>
@@ -210,7 +351,7 @@ footer nav{gap:20px}
 <div class="spine">אוסף סתיו 2026 · תל אביב</div>
 
 <header>
-  <nav>
+  <nav class="nav-desktop">
     <a href="#collection">האוסף</a>
     <a href="#about">הסיפור</a>
     <a href="#">חנויות</a>
@@ -220,6 +361,18 @@ footer nav{gap:20px}
     <a href="#">חיפוש</a>
     <a href="#">תיק (0)</a>
   </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="burger" aria-label="פתיחת תפריט">
+    <span></span><span></span><span></span>
+  </label>
+  <nav class="mobile-panel">
+    <a href="#collection">האוסף</a>
+    <a href="#atelier">המלאכה</a>
+    <a href="#about">הסיפור</a>
+    <a href="#">חנויות</a>
+    <a href="#">חיפוש</a>
+    <a href="#">תיק (0)</a>
+  </nav>
 </header>
 
 <section class="hero">
@@ -229,18 +382,25 @@ footer nav{gap:20px}
   <div class="hero-note">
     <div class="eyebrow rise">אוסף ראשון · פשתן ישראלי</div>
     <h1 class="rise">בגד אחד<br>ל<em>עשר</em> שנים.</h1>
-    <p class="lede rise">שבעה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק. אנחנו מייצרים מעט, ורק כשיש ביקוש.</p>
+    <p class="lede rise">שישה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק. אנחנו מייצרים מעט, ורק כשיש ביקוש.</p>
     <a href="#collection" class="cta rise">צפייה באוסף</a>
   </div>
 </section>
 
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>אוסף סתיו 2026</span><span>פשתן ישראלי</span><span>תפירת יד ביפו</span><span>ייצור מוגבל</span>
+    <span>אוסף סתיו 2026</span><span>פשתן ישראלי</span><span>תפירת יד ביפו</span><span>ייצור מוגבל</span>
+  </div>
+</div>
+
 <section class="collection" id="collection">
   <div class="rule">
     <span>האוסף</span>
-    <span>שבעה פריטים · זמין</span>
+    <span>שישה פריטים · זמין</span>
   </div>
   <div class="grid">
-    <article class="item">
+    <article class="item reveal">
       <div class="frame" data-slot="FIG. 02">
         <img src="img/coat.jpg" alt="מעיל יפו — מעילי פשתן לבנים תלויים על מתלה עץ" width="900" height="1200" loading="lazy" decoding="async">
       </div>
@@ -249,7 +409,7 @@ footer nav{gap:20px}
         <div class="meta">פשתן כבד<br>₪1,290</div>
       </div>
     </article>
-    <article class="item">
+    <article class="item reveal">
       <div class="frame" data-slot="FIG. 03">
         <img src="img/shirt.jpg" alt="חולצת עמק — פרט תפירה של חולצת פשתן לבנה על רקע חוף" width="900" height="1200" loading="lazy" decoding="async">
       </div>
@@ -258,7 +418,7 @@ footer nav{gap:20px}
         <div class="meta">פשתן רך<br>₪480</div>
       </div>
     </article>
-    <article class="item">
+    <article class="item reveal">
       <div class="frame" data-slot="FIG. 04">
         <img src="img/trousers.jpg" alt="מכנסי שרב — מכנסי פשתן בהירים על רקע חומה מאבן" width="900" height="1200" loading="lazy" decoding="async">
       </div>
@@ -268,6 +428,77 @@ footer nav{gap:20px}
       </div>
     </article>
   </div>
+
+  <figure class="lookbook reveal">
+    <img src="img/lookbook.jpg" alt="גבר לובש חולצת פשתן לבנה הולך בסמטה ים תיכונית" width="2000" height="1000" loading="lazy" decoding="async">
+    <figcaption>LOOK 01 — יפו, בוקר</figcaption>
+  </figure>
+
+  <div class="grid">
+    <article class="item reveal">
+      <div class="frame" data-slot="FIG. 05">
+        <img src="img/dress.jpg" alt="שמלת נמל — שמלת פשתן לבנה בגזרת שרוול תפוח" width="900" height="1200" loading="lazy" decoding="async">
+      </div>
+      <div class="label">
+        <h3>שמלת נמל</h3>
+        <div class="meta">פשתן מבריק<br>₪890</div>
+      </div>
+    </article>
+    <article class="item reveal">
+      <div class="frame" data-slot="FIG. 06">
+        <img src="img/skirt.jpg" alt="חצאית מעיין — חצאית פשתן בהירה עם כפתורים על רציף עץ" width="900" height="1200" loading="lazy" decoding="async">
+      </div>
+      <div class="label">
+        <h3>חצאית מעיין</h3>
+        <div class="meta">כותנה-פשתן<br>₪560</div>
+      </div>
+    </article>
+    <article class="item reveal">
+      <div class="frame" data-slot="FIG. 07">
+        <img src="img/cardigan.jpg" alt="ז'קט תמר — ז'קט פשתן מקופל בגזרה רפויה" width="900" height="1200" loading="lazy" decoding="async">
+      </div>
+      <div class="label">
+        <h3>ז'קט תמר</h3>
+        <div class="meta">פשתן קל<br>₪720</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="atelier" id="atelier">
+  <div class="atelier-media reveal">
+    <div class="frame" data-slot="FIG. 08">
+      <img src="img/atelier.jpg" alt="ידיים תופרות שולי בד פשתן בעבודת יד" width="1100" height="1375" loading="lazy" decoding="async">
+    </div>
+  </div>
+  <div class="atelier-copy reveal">
+    <div class="eyebrow">המלאכה</div>
+    <h2>כל תפר נתפר ביד אחת.</h2>
+    <p>בסדנה קטנה ביפו, שש תופרות עובדות על כל פריט מהבד הגולמי ועד הכפתור האחרון. בגד שאמור להחזיק מעמד עשר שנים לא נתפר בחיפזון — ולכן אנחנו לא ממהרים, גם כשיש תור המתנה.</p>
+    <div class="atelier-stats">
+      <div><span>06</span>תופרות בסדנה</div>
+      <div><span>04</span>שעות תפירה לפריט</div>
+      <div><span>2024</span>שנת ייסוד</div>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="value reveal">
+    <span class="num">01</span>
+    <h3>פשתן ישראלי</h3>
+    <p>גדל ונטווה בעמק יזרעאל, במרחק שעה נסיעה מהסדנה ביפו.</p>
+  </div>
+  <div class="value reveal">
+    <span class="num">02</span>
+    <h3>ייצור מוגבל</h3>
+    <p>כל סדרה מוגבלת למאה יחידות. כשהן אוזלות, הן אוזלות עד לסדרה הבאה.</p>
+  </div>
+  <div class="value reveal">
+    <span class="num">03</span>
+    <h3>עשוי לעשור</h3>
+    <p>תפרים כפולים, בדים כבדים, בלי קיצורי דרך בייצור.</p>
+  </div>
 </section>
 
 <section class="statement" id="about">
@@ -275,14 +506,65 @@ footer nav{gap:20px}
   <span>נוסד ביפו, 2024</span>
 </section>
 
+<section class="newsletter reveal">
+  <div class="newsletter-copy">
+    <h2>הקולקציה הבאה, לפני כולם.</h2>
+    <p>מייל אחד כשסדרה חדשה יוצאת. לא יותר מזה.</p>
+  </div>
+  <form class="newsletter-form">
+    <input type="email" required placeholder="האימייל שלך" aria-label="אימייל">
+    <button type="submit">הצטרפו</button>
+  </form>
+</section>
+
 <footer>
-  <div>© 2026 אֶמֶשׁ</div>
-  <nav>
-    <a href="#">משלוחים והחזרות</a>
-    <a href="#">צור קשר</a>
-    <a href="#">מדיניות פרטיות</a>
-  </nav>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="wordmark" style="text-align:right">אֶמֶשׁ</div>
+      <p>אוסף פשתן קטן, נתפר ביד ביפו. מיוצר לפי דרישה, בלי מלאי עודף.</p>
+    </div>
+    <div class="footer-col">
+      <h4>חנות</h4>
+      <a href="#collection">האוסף</a>
+      <a href="#atelier">המלאכה</a>
+      <a href="#about">הסיפור</a>
+    </div>
+    <div class="footer-col">
+      <h4>מידע</h4>
+      <a href="#">משלוחים והחזרות</a>
+      <a href="#">צור קשר</a>
+      <a href="#">מדיניות פרטיות</a>
+    </div>
+    <div class="footer-col">
+      <h4>עקבו</h4>
+      <a href="#">אינסטגרם</a>
+      <a href="#">פינטרסט</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 אֶמֶשׁ</span>
+    <span>כל הזכויות שמורות</span>
+  </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  var form=document.querySelector('.newsletter-form');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      form.outerHTML='<p class="newsletter-thanks">תודה, נדבר בקרוב.</p>';
+    });
+  }
+});
+</script>
 
 </body>
 </html>
