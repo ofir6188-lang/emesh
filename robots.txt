@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ofir6188-lang.github.io/emesh/sitemap.xml

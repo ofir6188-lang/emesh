@@ -9,6 +9,13 @@
 <meta property="og:description" content="בגד אחד לעשר שנים. שישה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק.">
 <meta property="og:image" content="img/hero.jpg">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://ofir6188-lang.github.io/emesh/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="אֶמֶשׁ — אוסף סתיו">
+<meta name="twitter:description" content="בגד אחד לעשר שנים. שישה פריטים, נתפרים בעבודת יד ביפו מפשתן שנארג בעמק.">
+<meta name="twitter:image" content="img/hero.jpg">
+<meta name="theme-color" content="#DEDBD2">
+<link rel="canonical" href="https://ofir6188-lang.github.io/emesh/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C1D19'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23F2F1EC' text-anchor='middle'%3E%D7%90%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -254,7 +261,20 @@ h1 em{font-style:normal;color:var(--sea)}
   color:var(--paper);
   background:
     linear-gradient(180deg,rgba(28,29,25,.88),rgba(28,29,25,.93)),
-    url("img/statement-bg.jpg") center/cover no-repeat;
+    url("img/statement-bg-small.jpg") center/cover no-repeat;
+  background:
+    linear-gradient(180deg,rgba(28,29,25,.88),rgba(28,29,25,.93)),
+    image-set(url("img/statement-bg-small.webp") type("image/webp"),url("img/statement-bg-small.jpg") type("image/jpeg")) center/cover no-repeat;
+}
+@media (min-width:761px){
+  .statement{
+    background:
+      linear-gradient(180deg,rgba(28,29,25,.88),rgba(28,29,25,.93)),
+      url("img/statement-bg.jpg") center/cover no-repeat;
+    background:
+      linear-gradient(180deg,rgba(28,29,25,.88),rgba(28,29,25,.93)),
+      image-set(url("img/statement-bg.webp") type("image/webp"),url("img/statement-bg.jpg") type("image/jpeg")) center/cover no-repeat;
+  }
 }
 .statement p{
   font-family:var(--display);font-weight:300;
@@ -377,7 +397,10 @@ footer{
 
 <section class="hero">
   <div class="frame rise" data-slot="FIG. 01 — אוסף סתיו">
-    <img src="img/hero.jpg" alt="דוגמנית לובשת שמלת פשתן חרדל מאוסף סתיו של אֶמֶשׁ" width="1100" height="1375" loading="eager" decoding="async">
+    <picture>
+      <source type="image/webp" srcset="img/hero-small.webp 700w, img/hero.webp 1100w" sizes="(max-width:760px) 100vw, 55vw">
+      <img src="img/hero.jpg" srcset="img/hero-small.jpg 700w, img/hero.jpg 1100w" sizes="(max-width:760px) 100vw, 55vw" alt="דוגמנית לובשת שמלת פשתן חרדל מאוסף סתיו של אֶמֶשׁ" width="1100" height="1375" loading="eager" decoding="async">
+    </picture>
   </div>
   <div class="hero-note">
     <div class="eyebrow rise">אוסף ראשון · פשתן ישראלי</div>
@@ -430,7 +453,10 @@ footer{
   </div>
 
   <figure class="lookbook reveal">
-    <img src="img/lookbook.jpg" alt="גבר לובש חולצת פשתן לבנה הולך בסמטה ים תיכונית" width="2000" height="1000" loading="lazy" decoding="async">
+    <picture>
+      <source type="image/webp" srcset="img/lookbook-small.webp 1000w, img/lookbook.webp 2000w" sizes="100vw">
+      <img src="img/lookbook.jpg" srcset="img/lookbook-small.jpg 1000w, img/lookbook.jpg 2000w" sizes="100vw" alt="גבר לובש חולצת פשתן לבנה הולך בסמטה ים תיכונית" width="2000" height="1000" loading="lazy" decoding="async">
+    </picture>
     <figcaption>LOOK 01 — יפו, בוקר</figcaption>
   </figure>
 
@@ -468,7 +494,10 @@ footer{
 <section class="atelier" id="atelier">
   <div class="atelier-media reveal">
     <div class="frame" data-slot="FIG. 08">
-      <img src="img/atelier.jpg" alt="ידיים תופרות שולי בד פשתן בעבודת יד" width="1100" height="1375" loading="lazy" decoding="async">
+      <picture>
+        <source type="image/webp" srcset="img/atelier-small.webp 700w, img/atelier.webp 1100w" sizes="(max-width:760px) 100vw, 45vw">
+        <img src="img/atelier.jpg" srcset="img/atelier-small.jpg 700w, img/atelier.jpg 1100w" sizes="(max-width:760px) 100vw, 45vw" alt="ידיים תופרות שולי בד פשתן בעבודת יד" width="1100" height="1375" loading="lazy" decoding="async">
+      </picture>
     </div>
   </div>
   <div class="atelier-copy reveal">
