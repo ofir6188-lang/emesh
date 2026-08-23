@@ -1,0 +1,16 @@
+{%- comment -%}
+  Renders the fabric/type line + price, with strikethrough compare-at price when on sale.
+  Accepts: product (or variant)
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign fabric = product.type
+-%}
+<div class="meta">
+  {%- if fabric != blank -%}{{ fabric }}<br>{%- endif -%}
+  {%- if target.compare_at_price > target.price -%}
+    <s>{{ target.compare_at_price | money }}</s> {{ target.price | money }}
+  {%- else -%}
+    {{ target.price | money }}
+  {%- endif -%}
+</div>

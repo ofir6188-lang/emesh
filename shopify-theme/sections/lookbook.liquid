@@ -1,0 +1,26 @@
+<figure class="lookbook reveal">
+  {%- if section.settings.image -%}
+    {{ section.settings.image | image_url: width: 2000 | image_tag:
+      loading: 'lazy',
+      widths: '1000, 1500, 2000',
+      sizes: '100vw',
+      alt: section.settings.image.alt | default: section.settings.caption
+    }}
+  {%- else -%}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+  {%- if section.settings.caption != blank -%}
+    <figcaption>{{ section.settings.caption }}</figcaption>
+  {%- endif -%}
+</figure>
+
+{% schema %}
+{
+  "name": "לוקבוק (תמונה רחבה)",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "תמונה" },
+    { "type": "text", "id": "caption", "label": "כיתוב", "default": "LOOK 01 — יפו, בוקר" }
+  ],
+  "presets": [{ "name": "לוקבוק (תמונה רחבה)" }]
+}
+{% endschema %}

@@ -1,0 +1,26 @@
+<section class="newsletter reveal">
+  <div class="newsletter-copy">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subtext }}</p>
+  </div>
+  {%- form 'customer', id: 'newsletter-form', class: 'newsletter-form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    {%- if form.posted_successfully? -%}
+      <p class="newsletter-thanks">{{ 'newsletter.thanks' | t }}</p>
+    {%- else -%}
+      <input type="email" name="contact[email]" required placeholder="{{ 'newsletter.placeholder' | t }}" aria-label="{{ 'newsletter.placeholder' | t }}" value="{{ form.email }}">
+      <button type="submit">{{ 'newsletter.submit' | t }}</button>
+    {%- endif -%}
+  {%- endform -%}
+</section>
+
+{% schema %}
+{
+  "name": "ניוזלטר",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "הקולקציה הבאה, לפני כולם." },
+    { "type": "text", "id": "subtext", "label": "טקסט משנה", "default": "מייל אחד כשסדרה חדשה יוצאת. לא יותר מזה." }
+  ],
+  "presets": [{ "name": "ניוזלטר" }]
+}
+{% endschema %}

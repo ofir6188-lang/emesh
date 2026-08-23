@@ -1,0 +1,34 @@
+<section class="collection" id="collection">
+  <div class="rule">
+    <span>{{ collection.title }}</span>
+    <span>{{ collection.products_count }} {{ 'collections.general.items_count' | t }} · {{ 'collections.general.in_stock' | t }}</span>
+  </div>
+  {%- if collection.description != blank -%}
+    <div class="collection-description">{{ collection.description }}</div>
+  {%- endif -%}
+  {%- paginate collection.products by 24 -%}
+    <div class="grid">
+      {%- for product in collection.products -%}
+        {%- assign fig_number = forloop.index | plus: 1 -%}
+        {%- if fig_number < 10 -%}{%- assign fig_label = 'FIG. 0' | append: fig_number -%}{%- else -%}{%- assign fig_label = 'FIG. ' | append: fig_number -%}{%- endif -%}
+        {%- render 'product-card', product: product, fig_label: fig_label -%}
+      {%- else -%}
+        <p class="collection-empty">{{ 'collections.general.no_matches' | t }}</p>
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination" aria-label="{{ 'general.pagination.label' | t }}">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">{{ 'general.pagination.previous' | t }}</a>{%- endif -%}
+        <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{
+  "name": "רשימת אוסף",
+  "settings": []
+}
+{% endschema %}

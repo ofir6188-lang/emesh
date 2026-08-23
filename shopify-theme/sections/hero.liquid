@@ -1,0 +1,38 @@
+<section class="hero">
+  <div class="frame rise" data-slot="{{ section.settings.fig_label }}">
+    {%- if section.settings.image -%}
+      {{ section.settings.image | image_url: width: 1600 | image_tag:
+        loading: 'eager',
+        widths: '700, 1100, 1600',
+        sizes: '(max-width:760px) 100vw, 55vw',
+        alt: section.settings.image.alt | default: section.settings.heading
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="hero-note">
+    <div class="eyebrow rise">{{ section.settings.eyebrow }}</div>
+    <h1 class="rise">{{ section.settings.heading }}</h1>
+    <p class="lede rise">{{ section.settings.lede }}</p>
+    {%- if section.settings.cta_text != blank -%}
+      <a href="{{ section.settings.cta_link | default: '#collection' }}" class="cta rise">{{ section.settings.cta_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "היירו",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "תמונה" },
+    { "type": "text", "id": "fig_label", "label": "תווית תמונה", "default": "FIG. 01 — אוסף סתיו" },
+    { "type": "text", "id": "eyebrow", "label": "שורת פתיחה", "default": "אוסף ראשון · כסף 925" },
+    { "type": "richtext", "id": "heading", "label": "כותרת", "default": "<p>תכשיט אחד<br>לעשר שנים.</p>" },
+    { "type": "textarea", "id": "lede", "label": "טקסט", "default": "שישה תכשיטים, מעוצבים ומיוצרים ביד ביפו מכסף סטרלינג. אנחנו מייצרים מעט, ורק כשיש ביקוש." },
+    { "type": "text", "id": "cta_text", "label": "טקסט כפתור", "default": "צפייה באוסף" },
+    { "type": "url", "id": "cta_link", "label": "קישור כפתור" }
+  ],
+  "presets": [{ "name": "היירו" }]
+}
+{% endschema %}

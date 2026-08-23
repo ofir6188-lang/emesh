@@ -1,0 +1,33 @@
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "רצועת טקסט נעה",
+  "blocks": [
+    {
+      "type": "phrase",
+      "name": "ביטוי",
+      "settings": [
+        { "type": "text", "id": "text", "label": "טקסט" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "phrase", "settings": { "text": "אוסף סתיו 2026" } },
+      { "type": "phrase", "settings": { "text": "כסף 925" } },
+      { "type": "phrase", "settings": { "text": "צריפה ביד ביפו" } },
+      { "type": "phrase", "settings": { "text": "ייצור מוגבל" } }
+    ]
+  },
+  "presets": [{ "name": "רצועת טקסט נעה" }]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+<header>
+  <nav class="nav-desktop">
+    {%- for link in section.settings.menu.links -%}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- endfor -%}
+  </nav>
+  <a href="{{ routes.root_url }}" class="wordmark">{{ shop.name }}</a>
+  <div class="utility">
+    <a href="{{ routes.search_url }}">{{ 'general.search.title' | t }}</a>
+    <button type="button" class="cart-toggle" aria-label="{{ 'cart.general.title' | t }}">
+      {{ 'cart.general.title' | t }} (<span class="cart-count">{{ cart.item_count }}</span>)
+    </button>
+  </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="burger" aria-label="{{ 'general.accessibility.open_menu' | t }}">
+    <span></span><span></span><span></span>
+  </label>
+  <nav class="mobile-panel">
+    {%- for link in section.settings.menu.links -%}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- endfor -%}
+    <a href="{{ routes.search_url }}">{{ 'general.search.title' | t }}</a>
+    <button type="button" class="cart-toggle" aria-label="{{ 'cart.general.title' | t }}">
+      {{ 'cart.general.title' | t }} (<span class="cart-count">{{ cart.item_count }}</span>)
+    </button>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "כותרת עליונה",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "תפריט ניווט",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

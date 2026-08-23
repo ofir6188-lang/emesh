@@ -1,0 +1,36 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "סַהַר",
+    "theme_version": "1.0.0",
+    "theme_author": "סַהַר",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "כללי",
+    "settings": [
+      {
+        "type": "text",
+        "id": "spine_text",
+        "label": "טקסט פס צד",
+        "default": "אוסף סתיו 2026 · תל אביב"
+      }
+    ]
+  },
+  {
+    "name": "רשתות חברתיות",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram_link",
+        "label": "אינסטגרם"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest_link",
+        "label": "פינטרסט"
+      }
+    ]
+  }
+]

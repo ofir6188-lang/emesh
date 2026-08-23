@@ -1,0 +1,53 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "דלג לתוכן",
+      "open_menu": "פתיחת תפריט",
+      "close": "סגירה"
+    },
+    "search": {
+      "title": "חיפוש"
+    },
+    "pagination": {
+      "label": "עימוד",
+      "previous": "הקודם",
+      "next": "הבא"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "תיק",
+      "empty": "התיק שלך ריק.",
+      "continue_shopping": "המשך בקנייה",
+      "subtotal": "סכום ביניים",
+      "checkout": "מעבר לתשלום",
+      "quantity": "כמות",
+      "remove": "הסרה",
+      "view_cart": "לצפייה בתיק"
+    }
+  },
+  "collections": {
+    "general": {
+      "items_count": "פריטים",
+      "in_stock": "זמין",
+      "no_matches": "לא נמצאו מוצרים."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "הוספה לתיק",
+      "sold_out": "אזל מהמלאי",
+      "quantity": {
+        "label": "כמות"
+      },
+      "media": {
+        "image": "תמונה"
+      }
+    }
+  },
+  "newsletter": {
+    "placeholder": "האימייל שלך",
+    "submit": "הצטרפו",
+    "thanks": "תודה, נדבר בקרוב."
+  }
+}

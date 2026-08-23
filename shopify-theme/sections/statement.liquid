@@ -1,0 +1,21 @@
+<section
+  class="statement"
+  id="{{ section.settings.anchor_id | default: 'about' }}"
+  {%- if section.settings.image %} style="--statement-bg:url('{{ section.settings.image | image_url: width: 1800 }}')"{% endif -%}
+>
+  <p>{{ section.settings.quote }}</p>
+  {%- if section.settings.attribution != blank -%}<span>{{ section.settings.attribution }}</span>{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "ציטוט",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "תמונת רקע" },
+    { "type": "text", "id": "anchor_id", "label": "עוגן (id)", "default": "about" },
+    { "type": "textarea", "id": "quote", "label": "ציטוט", "default": "אנחנו לא מוציאים קולקציה בכל עונה. אנחנו מוציאים אותה כשהיא מוכנה." },
+    { "type": "text", "id": "attribution", "label": "שורת ייחוס", "default": "נוסד ביפו, 2024" }
+  ],
+  "presets": [{ "name": "ציטוט" }]
+}
+{% endschema %}

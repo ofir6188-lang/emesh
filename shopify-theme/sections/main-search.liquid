@@ -1,0 +1,28 @@
+<section class="collection" id="search">
+  <div class="rule"><span>{{ 'general.search.title' | t }}</span></div>
+  <form action="{{ routes.search_url }}" method="get" role="search" class="newsletter-form" style="margin-bottom:clamp(32px,4vw,48px)">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.title' | t }}" aria-label="{{ 'general.search.title' | t }}">
+    <button type="submit">{{ 'general.search.title' | t }}</button>
+  </form>
+
+  {%- if search.performed -%}
+    {%- if search.results_count > 0 -%}
+      <div class="grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {%- render 'product-card', product: item, fig_label: '' -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="collection-empty">{{ 'collections.general.no_matches' | t }}</p>
+    {%- endif -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "תוצאות חיפוש",
+  "settings": []
+}
+{% endschema %}

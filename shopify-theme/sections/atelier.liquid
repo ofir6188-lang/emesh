@@ -1,0 +1,60 @@
+<section class="atelier" id="{{ section.settings.anchor_id | default: 'atelier' }}">
+  <div class="atelier-media reveal">
+    <div class="frame" data-slot="{{ section.settings.fig_label }}">
+      {%- if section.settings.image -%}
+        {{ section.settings.image | image_url: width: 1600 | image_tag:
+          loading: 'lazy',
+          widths: '700, 1100, 1600',
+          sizes: '(max-width:760px) 100vw, 45vw',
+          alt: section.settings.image.alt | default: section.settings.heading
+        }}
+      {%- else -%}
+        {{ 'lifestyle-3' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="atelier-copy reveal">
+    <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.body }}</p>
+    {%- if section.blocks.size > 0 -%}
+      <div class="atelier-stats">
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}><span>{{ block.settings.number }}</span>{{ block.settings.label }}</div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "המלאכה",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "תמונה" },
+    { "type": "text", "id": "fig_label", "label": "תווית תמונה", "default": "FIG. 08" },
+    { "type": "text", "id": "anchor_id", "label": "עוגן (id)", "default": "atelier" },
+    { "type": "text", "id": "eyebrow", "label": "שורת פתיחה", "default": "המלאכה" },
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "כל תכשיט מעוצב ביד אחת." },
+    { "type": "textarea", "id": "body", "label": "טקסט", "default": "בסדנה קטנה ביפו, שש צורפות עובדות על כל תכשיט מהכסף הגולמי ועד המלטוש האחרון. תכשיט שאמור להחזיק מעמד עשר שנים לא נוצר בחיפזון — ולכן אנחנו לא ממהרות, גם כשיש תור המתנה." }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "נתון",
+      "settings": [
+        { "type": "text", "id": "number", "label": "מספר", "default": "06" },
+        { "type": "text", "id": "label", "label": "תווית", "default": "צורפות בסדנה" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "number": "06", "label": "צורפות בסדנה" } },
+      { "type": "stat", "settings": { "number": "04", "label": "שעות עבודה לתכשיט" } },
+      { "type": "stat", "settings": { "number": "2024", "label": "שנת ייסוד" } }
+    ]
+  },
+  "presets": [{ "name": "המלאכה" }]
+}
+{% endschema %}

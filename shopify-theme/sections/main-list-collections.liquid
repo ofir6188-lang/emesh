@@ -1,0 +1,21 @@
+<section class="collection" id="collections">
+  <div class="rule"><span>{{ 'general.search.title' | t }}</span></div>
+  <div class="grid">
+    {%- for collection in collections -%}
+      <article class="item reveal">
+        <a href="{{ collection.url }}" class="frame" data-slot="">
+          {%- if collection.image -%}
+            {{ collection.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(max-width:760px) 50vw, 25vw', alt: collection.title }}
+          {%- else -%}
+            {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </a>
+        <div class="label"><h3><a href="{{ collection.url }}">{{ collection.title }}</a></h3></div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "רשימת אוספים", "settings": [] }
+{% endschema %}

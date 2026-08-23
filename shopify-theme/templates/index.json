@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "ticker": { "type": "ticker" },
+    "collection-row-1": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "show_heading": true,
+        "heading": "האוסף",
+        "anchor_id": "collection",
+        "limit": 3,
+        "offset": 0,
+        "fig_start": 2
+      }
+    },
+    "lookbook": { "type": "lookbook" },
+    "collection-row-2": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "show_heading": false,
+        "limit": 3,
+        "offset": 3,
+        "fig_start": 5
+      }
+    },
+    "atelier": { "type": "atelier" },
+    "values": { "type": "values" },
+    "statement": { "type": "statement" },
+    "newsletter": { "type": "newsletter" }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "collection-row-1",
+    "lookbook",
+    "collection-row-2",
+    "atelier",
+    "values",
+    "statement",
+    "newsletter"
+  ]
+}

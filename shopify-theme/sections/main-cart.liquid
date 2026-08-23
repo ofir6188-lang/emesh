@@ -1,0 +1,43 @@
+<section class="cart-page" id="MainCart">
+  <div class="rule"><span>{{ 'cart.general.title' | t }}</span></div>
+
+  {%- if cart.item_count == 0 -%}
+    <p class="cart-empty">{{ 'cart.general.empty' | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="cta">{{ 'cart.general.continue_shopping' | t }}</a>
+  {%- else -%}
+    {% form 'cart', cart, id: 'CartPageForm' %}
+      <div class="cart-lines">
+        {%- for item in cart.items -%}
+          <div class="cart-line" data-line-index="{{ forloop.index }}">
+            <a href="{{ item.url }}" class="cart-line-image">
+              {{ item.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: item.image.alt }}
+            </a>
+            <div class="cart-line-info">
+              <a href="{{ item.url }}" class="cart-line-title">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}
+                <div class="cart-line-variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="cart-line-price">{{ item.final_price | money }}</div>
+            </div>
+            <input type="number" class="cart-qty" name="updates[]" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" aria-label="{{ 'cart.general.quantity' | t }}">
+            <a href="{{ item.url_to_remove }}" class="cart-line-remove">{{ 'cart.general.remove' | t }}</a>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="cart-summary">
+        <div class="cart-subtotal">
+          <span>{{ 'cart.general.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <button type="submit" name="checkout" class="cta checkout-btn">{{ 'cart.general.checkout' | t }}</button>
+      </div>
+    {% endform %}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "עמוד עגלה",
+  "settings": []
+}
+{% endschema %}
