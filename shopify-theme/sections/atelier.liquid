@@ -9,7 +9,7 @@
           alt: section.settings.image.alt | default: section.settings.heading
         }}
       {%- else -%}
-        {{ 'lifestyle-3' | placeholder_svg_tag: 'placeholder-svg' }}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
       {%- endif -%}
     </div>
   </div>
@@ -54,7 +54,6 @@
       { "type": "stat", "settings": { "number": "04", "label": "שעות עבודה לתכשיט" } },
       { "type": "stat", "settings": { "number": "2024", "label": "שנת ייסוד" } }
     ]
-  },
-  "presets": [{ "name": "המלאכה" }]
+  }
 }
 {% endschema %}
