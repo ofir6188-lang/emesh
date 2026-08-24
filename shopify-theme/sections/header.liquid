@@ -8,7 +8,7 @@
   <div class="utility">
     <a href="{{ routes.search_url }}">{{ 'general.search.title' | t }}</a>
     <button type="button" class="cart-toggle" aria-label="{{ 'cart.general.title' | t }}">
-      {{ 'cart.general.title' | t }} (<span class="cart-count">{{ cart.item_count }}</span>)
+      {{ 'cart.general.title' | t }} <span class="cart-count">{{ cart.item_count }}</span>
     </button>
   </div>
   <input type="checkbox" id="nav-toggle" class="nav-toggle">
@@ -21,7 +21,7 @@
     {%- endfor -%}
     <a href="{{ routes.search_url }}">{{ 'general.search.title' | t }}</a>
     <button type="button" class="cart-toggle" aria-label="{{ 'cart.general.title' | t }}">
-      {{ 'cart.general.title' | t }} (<span class="cart-count">{{ cart.item_count }}</span>)
+      {{ 'cart.general.title' | t }} <span class="cart-count">{{ cart.item_count }}</span>
     </button>
   </nav>
 </header>

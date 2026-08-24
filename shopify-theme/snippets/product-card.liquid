@@ -3,21 +3,28 @@
   Accepts: product, fig_label (string)
 {%- endcomment -%}
 <article class="item reveal">
-  <a href="{{ product.url }}" class="frame" data-slot="{{ fig_label }}">
-    {%- if product.featured_media -%}
-      {{ product.featured_media | image_url: width: 1200 | image_tag:
-        loading: 'lazy',
-        widths: '450, 700, 900, 1200',
-        sizes: '(max-width:760px) 50vw, 25vw',
-        alt: product.featured_media.alt | default: product.title
-      }}
-    {%- else -%}
-      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-    {%- endif -%}
+  <div class="frame" data-slot="{{ fig_label }}">
+    <a href="{{ product.url }}" class="frame-link" aria-label="{{ product.title }}">
+      {%- if product.featured_media -%}
+        {{ product.featured_media | image_url: width: 1200 | image_tag:
+          loading: 'lazy',
+          widths: '450, 700, 900, 1200',
+          sizes: '(max-width:760px) 50vw, 25vw',
+          alt: product.featured_media.alt | default: product.title
+        }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
     {%- if product.available == false -%}
       <span class="sold-out-badge">{{ 'products.product.sold_out' | t }}</span>
     {%- endif -%}
-  </a>
+    {%- if product.available and product.has_only_default_variant -%}
+      <button type="button" class="quick-add-btn" data-quick-add data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+        {{ 'products.product.add_to_cart' | t }}
+      </button>
+    {%- endif -%}
+  </div>
   <div class="label">
     <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
     {%- render 'price', product: product -%}

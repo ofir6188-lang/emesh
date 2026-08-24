@@ -154,6 +154,35 @@
     selects.forEach(function (s) { s.addEventListener('change', onOptionChange); });
   }
 
+  // quick-add buttons on product cards (grid/collection listings)
+  document.querySelectorAll('[data-quick-add]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var originalText = btn.textContent;
+      btn.disabled = true;
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: btn.getAttribute('data-variant-id'), quantity: 1 })
+      })
+        .then(function (res) {
+          if (!res.ok) return res.json().then(function (err) { throw err; });
+          return res.json();
+        })
+        .then(function () { return refreshDrawer(); })
+        .then(function () {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          openDrawer();
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert((err && err.description) || 'שגיאה בהוספה לעגלה');
+        });
+    });
+  });
+
   // product image thumbnails
   document.querySelectorAll('.product-thumb').forEach(function (btn) {
     btn.addEventListener('click', function () {

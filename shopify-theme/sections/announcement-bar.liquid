@@ -1,0 +1,32 @@
+<div class="announce" aria-hidden="true">
+  <div class="announce-track">
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "רצועת הכרזה",
+  "blocks": [
+    {
+      "type": "message",
+      "name": "הודעה",
+      "settings": [
+        { "type": "text", "id": "text", "label": "טקסט" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "message", "settings": { "text": "משלוח חינם מעל ₪300" } },
+      { "type": "message", "settings": { "text": "תעודת אותנטיות לכל תכשיט" } },
+      { "type": "message", "settings": { "text": "עבודת יד בסדנה ביפו" } },
+      { "type": "message", "settings": { "text": "החזרה תוך 30 יום" } }
+    ]
+  }
+}
+{% endschema %}

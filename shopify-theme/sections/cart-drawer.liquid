@@ -36,7 +36,7 @@
           <span>{{ 'cart.general.subtotal' | t }}</span>
           <span>{{ cart.total_price | money }}</span>
         </div>
-        <a href="{{ routes.cart_url }}" class="cta cart-view-link">{{ 'cart.general.view_cart' | t }}</a>
+        <a href="{{ routes.cart_url }}" class="cta cta-outline cart-view-link">{{ 'cart.general.view_cart' | t }}</a>
         <a href="/checkout" class="cta checkout-btn">{{ 'cart.general.checkout' | t }}</a>
       </div>
     {%- endif -%}

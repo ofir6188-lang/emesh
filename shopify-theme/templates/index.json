@@ -1,7 +1,25 @@
 {
   "sections": {
     "hero": { "type": "hero" },
-    "ticker": { "type": "ticker" },
+    "ticker": {
+      "type": "ticker",
+      "blocks": {
+        "p1": { "type": "phrase", "settings": { "text": "אוסף סתיו 2026" } },
+        "p2": { "type": "phrase", "settings": { "text": "כסף 925" } },
+        "p3": { "type": "phrase", "settings": { "text": "צריפה ביד ביפו" } },
+        "p4": { "type": "phrase", "settings": { "text": "ייצור מוגבל" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"]
+    },
+    "categories": {
+      "type": "category-tiles",
+      "blocks": {
+        "c1": { "type": "category", "settings": { "title": "שרשראות", "link": "/collections/all" } },
+        "c2": { "type": "category", "settings": { "title": "צמידים", "link": "/collections/all" } },
+        "c3": { "type": "category", "settings": { "title": "תליונים", "link": "/collections/all" } }
+      },
+      "block_order": ["c1", "c2", "c3"]
+    },
     "collection-row-1": {
       "type": "featured-collection",
       "settings": {
@@ -25,14 +43,31 @@
         "fig_start": 5
       }
     },
-    "atelier": { "type": "atelier" },
-    "values": { "type": "values" },
+    "atelier": {
+      "type": "atelier",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "number": "06", "label": "צורפות בסדנה" } },
+        "s2": { "type": "stat", "settings": { "number": "04", "label": "שעות עבודה לתכשיט" } },
+        "s3": { "type": "stat", "settings": { "number": "2024", "label": "שנת ייסוד" } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "values": {
+      "type": "values",
+      "blocks": {
+        "v1": { "type": "value", "settings": { "number": "01", "heading": "כסף 925 אמיתי", "text": "כסף סטרלינג באיכות גבוהה, עם תעודת אותנטיות לכל תכשיט." } },
+        "v2": { "type": "value", "settings": { "number": "02", "heading": "ייצור מוגבל", "text": "כל סדרה מוגבלת למאה יחידות. כשהן אוזלות, הן אוזלות עד לסדרה הבאה." } },
+        "v3": { "type": "value", "settings": { "number": "03", "heading": "עשוי לעשור", "text": "כל חוליה מולחמת ביד, לא רק מהודקת — מצופה רודיום כדי שיישאר מבריק שנים." } }
+      },
+      "block_order": ["v1", "v2", "v3"]
+    },
     "statement": { "type": "statement" },
     "newsletter": { "type": "newsletter" }
   },
   "order": [
     "hero",
     "ticker",
+    "categories",
     "collection-row-1",
     "lookbook",
     "collection-row-2",
