@@ -1,9 +1,20 @@
 {%- comment -%}
-  Renders one product tile in the museum-label grid style.
-  Accepts: product, fig_label (string)
+  Renders one product tile as a clean retail card.
+  Accepts: product. "New" badge reflects the product's actual creation date
+  (shown for its first 30 days in the catalog), not a manual flag.
 {%- endcomment -%}
+{%- liquid
+  assign target_variant = product.selected_or_first_available_variant
+  assign created_ts = product.created_at | date: '%s' | times: 1
+  assign now_ts = 'now' | date: '%s' | times: 1
+  assign age_seconds = now_ts | minus: created_ts
+  assign show_new = false
+  if age_seconds < 2592000
+    assign show_new = true
+  endif
+-%}
 <article class="item reveal">
-  <div class="frame" data-slot="{{ fig_label }}">
+  <div class="frame">
     <a href="{{ product.url }}" class="frame-link" aria-label="{{ product.title }}">
       {%- if product.featured_media -%}
         {{ product.featured_media | image_url: width: 1200 | image_tag:
@@ -18,15 +29,23 @@
     </a>
     {%- if product.available == false -%}
       <span class="sold-out-badge">{{ 'products.product.sold_out' | t }}</span>
+    {%- elsif show_new -%}
+      <span class="new-badge">{{ 'products.product.new' | t }}</span>
     {%- endif -%}
     {%- if product.available and product.has_only_default_variant -%}
-      <button type="button" class="quick-add-btn" data-quick-add data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+      <button type="button" class="quick-add-btn" data-quick-add data-variant-id="{{ target_variant.id }}">
         {{ 'products.product.add_to_cart' | t }}
       </button>
     {%- endif -%}
   </div>
   <div class="label">
     <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
-    {%- render 'price', product: product -%}
+    <div class="meta">
+      {%- if target_variant.compare_at_price > target_variant.price -%}
+        {{ target_variant.price | money }} <s>{{ target_variant.compare_at_price | money }}</s>
+      {%- else -%}
+        {{ target_variant.price | money }}
+      {%- endif -%}
+    </div>
   </div>
 </article>

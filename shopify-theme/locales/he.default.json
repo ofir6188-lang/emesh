@@ -37,6 +37,7 @@
     "product": {
       "add_to_cart": "הוספה לתיק",
       "sold_out": "אזל מהמלאי",
+      "new": "חדש",
       "quantity": {
         "label": "כמות"
       },
