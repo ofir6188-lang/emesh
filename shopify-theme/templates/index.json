@@ -14,9 +14,9 @@
     "categories": {
       "type": "category-tiles",
       "blocks": {
-        "c1": { "type": "category", "settings": { "title": "שרשראות", "link": "/collections/all" } },
-        "c2": { "type": "category", "settings": { "title": "צמידים", "link": "/collections/all" } },
-        "c3": { "type": "category", "settings": { "title": "תליונים", "link": "/collections/all" } }
+        "c1": { "type": "category", "settings": { "title": "שרשראות", "link": "/collections/necklaces" } },
+        "c2": { "type": "category", "settings": { "title": "צמידים", "link": "/collections/bracelets" } },
+        "c3": { "type": "category", "settings": { "title": "תליונים", "link": "/collections/pendants" } }
       },
       "block_order": ["c1", "c2", "c3"]
     },
