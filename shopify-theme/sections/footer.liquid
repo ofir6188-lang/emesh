@@ -6,15 +6,18 @@
     </div>
     <div class="footer-col">
       <h4>חנות</h4>
-      {%- for link in section.settings.shop_menu.links -%}
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      {%- endfor -%}
+      <a href="{{ routes.all_products_collection_url }}">האוסף</a>
+      <a href="{{ routes.root_url }}#atelier">המלאכה</a>
+      <a href="{{ routes.root_url }}#about">הסיפור</a>
     </div>
     <div class="footer-col">
       <h4>מידע</h4>
-      {%- for link in section.settings.info_menu.links -%}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- for policy in shop.policies -%}
+        <a href="{{ policy.url }}">{{ policy.title }}</a>
       {%- endfor -%}
+      {%- if section.settings.contact_email != blank -%}
+        <a href="mailto:{{ section.settings.contact_email }}">צור קשר</a>
+      {%- endif -%}
     </div>
     <div class="footer-col">
       <h4>עקבו</h4>
@@ -43,16 +46,9 @@
       "default": "<p>אוסף תכשיטי כסף קטן, מעוצב ביד ביפו. מיוצר לפי דרישה, בלי מלאי עודף.</p>"
     },
     {
-      "type": "link_list",
-      "id": "shop_menu",
-      "label": "תפריט 'חנות'",
-      "default": "footer"
-    },
-    {
-      "type": "link_list",
-      "id": "info_menu",
-      "label": "תפריט 'מידע'",
-      "default": "footer"
+      "type": "text",
+      "id": "contact_email",
+      "label": "אימייל ליצירת קשר"
     }
   ]
 }
